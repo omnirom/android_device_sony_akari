@@ -12,5 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_akari.mk
+# Bootanimation
+TARGET_BOOTANIMATION_SIZE := 1080p
 
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/omni/config/gsm.mk)
+
+# Inherit device parts
+$(call inherit-product, device/sony/akari/aosp_h8216.mk)
+
+# Override Product Name
+PRODUCT_NAME := omni_akari
+PRODUCT_MODEL := Xperia XZ2
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := akari
+
+# Inherit rom parts
+$(call inherit-product, device/sony/common/omni.mk)
